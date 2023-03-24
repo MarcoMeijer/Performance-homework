@@ -1,5 +1,6 @@
-import { memo, useCallback, useState } from "react";
-import { ItemBox, MemoizedItemBox } from "./ItemBox";
+import React from "react";
+import { useCallback, useState } from "react";
+import { MemoizedItemBox } from "./ItemBox";
 import { getRandomItem, Item } from "./getRandomItem";
 
 export const App = () => {

@@ -1,3 +1,4 @@
+import React from "react";
 import { memo } from "react";
 import { IoIosClose } from "react-icons/io";
 import { Item } from "./getRandomItem";
@@ -24,9 +25,10 @@ interface MemoItemBoxProps {
   removeItem: (item: Item) => void;
 }
 
-export const MemoizedItemBox = memo(
-  ({ item, removeItem }: MemoItemBoxProps) => {
-    console.log(`memo ${item.word}`);
-    return <ItemBox item={item} onRemove={() => removeItem(item)} />;
-  }
-);
+export const MemoizedItemBox = memo(function MemoizedItemBox({
+  item,
+  removeItem,
+}: MemoItemBoxProps) {
+  console.log(`memo ${item.word}`);
+  return <ItemBox item={item} onRemove={() => removeItem(item)} />;
+});
