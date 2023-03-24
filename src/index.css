@@ -21,16 +21,17 @@ body,
   flex-direction: column;
   align-items: stretch;
   gap: 20px;
-  height: 80vh;
+  height: 700px;
   margin: 10vh 20vw;
   padding: 20px;
   position: relative;
   box-sizing: border-box;
-  overflow-y: scroll;
+  align-items: center;
 }
 
-.content > div {
+.itembox {
   height: 90px;
+  margin: 10px;
   overflow: visible;
   pointer-events: auto;
   transform-origin: 50% 50% 0px;
@@ -47,7 +48,7 @@ body,
   align-items: center;
 }
 
-.content > div > button {
+.itembox > button {
   background: none;
   padding: 1em;
   margin: -1em;
@@ -56,16 +57,16 @@ body,
   cursor: pointer;
 }
 
-.content > div:nth-child(1) {
+.itembox:nth-child(1) {
   background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
 }
-.content > div:nth-child(2) {
+.itembox:nth-child(2) {
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 }
-.content > div:nth-child(3) {
+.itembox:nth-child(3) {
   background: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%);
 }
-.content > div:nth-child(4) {
+.itembox:nth-child(4) {
   background: linear-gradient(135deg, #c3cfe2 0%, #c3cfe2 100%);
 }
 

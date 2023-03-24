@@ -6,16 +6,19 @@ import { Item } from "./getRandomItem";
 interface ItemBoxProps {
   item: Item;
   onRemove: () => void;
+  style: React.CSSProperties;
 }
 
-export const ItemBox = ({ item, onRemove }: ItemBoxProps) => {
+export const ItemBox = ({ item, onRemove, style }: ItemBoxProps) => {
   console.log("item");
   return (
-    <div style={{ background: item.background }}>
-      <h3>{item.word}</h3>
-      <button onClick={onRemove}>
-        <IoIosClose onClick={onRemove} className="icon-remove" size="2.5em" />
-      </button>
+    <div style={style}>
+      <div style={{ background: item.background }} className="itembox">
+        <h3>{item.word}</h3>
+        <button onClick={onRemove}>
+          <IoIosClose onClick={onRemove} className="icon-remove" size="2.5em" />
+        </button>
+      </div>
     </div>
   );
 };
@@ -23,12 +26,16 @@ export const ItemBox = ({ item, onRemove }: ItemBoxProps) => {
 interface MemoItemBoxProps {
   item: Item;
   removeItem: (item: Item) => void;
+  style: React.CSSProperties;
 }
 
 export const MemoizedItemBox = memo(function MemoizedItemBox({
   item,
   removeItem,
+  style,
 }: MemoItemBoxProps) {
   console.log(`memo ${item.word}`);
-  return <ItemBox item={item} onRemove={() => removeItem(item)} />;
+  return (
+    <ItemBox style={style} item={item} onRemove={() => removeItem(item)} />
+  );
 });
