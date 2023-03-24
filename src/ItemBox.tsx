@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { IoIosClose } from "react-icons/io";
 import { Item } from "./getRandomItem";
 
@@ -17,3 +18,15 @@ export const ItemBox = ({ item, onRemove }: ItemBoxProps) => {
     </div>
   );
 };
+
+interface MemoItemBoxProps {
+  item: Item;
+  removeItem: (item: Item) => void;
+}
+
+export const MemoizedItemBox = memo(
+  ({ item, removeItem }: MemoItemBoxProps) => {
+    console.log(`memo ${item.word}`);
+    return <ItemBox item={item} onRemove={() => removeItem(item)} />;
+  }
+);

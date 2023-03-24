@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { ItemBox } from "./ItemBox";
+import { memo, useCallback, useState } from "react";
+import { ItemBox, MemoizedItemBox } from "./ItemBox";
 import { getRandomItem, Item } from "./getRandomItem";
 
 export const App = () => {
@@ -11,19 +11,15 @@ export const App = () => {
     setItems((items) => [getRandomItem()].concat(items));
   };
 
-  const removeItem = (itemToRemove: Item) => {
+  const removeItem = useCallback((itemToRemove: Item) => {
     setItems((items) => items.filter((item) => item !== itemToRemove));
-  };
+  }, []);
 
   return (
     <>
       <div className="content">
         {items.map((item) => (
-          <ItemBox
-            key={item.id}
-            item={item}
-            onRemove={() => removeItem(item)}
-          />
+          <MemoizedItemBox key={item.id} item={item} removeItem={removeItem} />
         ))}
       </div>
       <button className="fab" onClick={addItem}>
